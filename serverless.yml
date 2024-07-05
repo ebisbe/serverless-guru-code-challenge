@@ -8,6 +8,11 @@ provider:
   name: aws
   runtime: nodejs20.x
 
+build:
+  esbuild:
+    bundle: true
+    minify: true
+
 functions:
   hello:
     handler: functions/handler.hello
