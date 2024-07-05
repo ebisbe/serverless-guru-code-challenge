@@ -12,6 +12,8 @@ jobs:
       - uses: pnpm/action-setup@v4
 
       - name: Deploy service
+        env:
+          SERVERLESS_ACCESS_KEY: ${{secrets.SERVERLESS_ACCESS_KEY}}
         run: |
           pnpm install
           pnpm sls deploy
