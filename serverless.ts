@@ -19,7 +19,7 @@ const serverlessConfig: Serverless = {
 
   functions: {
     createList: {
-      handler: "functions/list.create",
+      handler: "src/functions/list.create",
       environment: {
         ddb_table: { Ref: "DdbTable" },
       },
@@ -33,7 +33,7 @@ const serverlessConfig: Serverless = {
       ],
     },
     getList: {
-      handler: "functions/list.get",
+      handler: "src/functions/list.get",
       environment: {
         ddb_table: { Ref: "DdbTable" },
       },
@@ -47,7 +47,7 @@ const serverlessConfig: Serverless = {
       ],
     },
     updateList: {
-      handler: "functions/list.update",
+      handler: "src/functions/list.update",
       environment: {
         ddb_table: { Ref: "DdbTable" },
       },
@@ -61,7 +61,7 @@ const serverlessConfig: Serverless = {
       ],
     },
     removeList: {
-      handler: "functions/list.remove",
+      handler: "src/functions/list.remove",
       environment: {
         ddb_table: { Ref: "DdbTable" },
       },
