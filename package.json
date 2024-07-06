@@ -10,6 +10,9 @@
   "license": "ISC",
   "packageManager": "pnpm@9.4.0",
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.609.0",
+    "@types/serverless": "^3.12.22",
+    "dynamodb-onetable": "^2.7.4",
     "serverless": "^4.1.11"
   },
   "devDependencies": {

@@ -1,4 +1,4 @@
-export async function hello(event) {
+export async function hello() {
   return {
     statusCode: 200,
     body: JSON.stringify({
