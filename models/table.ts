@@ -15,6 +15,8 @@ const MySchema = {
     isoDates: true,
     separator: "#",
     timestamps: true,
+    createdField: "createdAt",
+    updatedField: "updatedAt",
   },
   models: {
     List: {
@@ -26,6 +28,8 @@ const MySchema = {
       description: { type: String },
       totalValue: { type: Number, default: 0 },
       totalItems: { type: Number, default: 0 },
+      createdAt: { type: String },
+      updatedAt: { type: String },
     },
     Item: {
       pk: { type: String, value: "LIST#${listId}" },
@@ -35,6 +39,8 @@ const MySchema = {
       name: { type: String },
       description: { type: String },
       value: { type: Number, default: 0 },
+      createdAt: { type: String },
+      updatedAt: { type: String },
     },
     Buyer: {
       pk: { type: String, value: "ITEM#${itemId}" },
@@ -42,6 +48,8 @@ const MySchema = {
       userId: { type: String, required: true },
       name: { type: String, required: true },
       itemId: { type: String, required: true },
+      createdAt: { type: String },
+      updatedAt: { type: String },
     },
   } as const,
 };
