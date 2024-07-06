@@ -59,6 +59,7 @@ const serverlessConfig: Serverless = {
               KeyType: "RANGE",
             },
           ],
+          BillingMode: "PAY_PER_REQUEST",
         },
       },
     },
