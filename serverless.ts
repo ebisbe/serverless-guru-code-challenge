@@ -20,6 +20,9 @@ const serverlessConfig: Serverless = {
   functions: {
     hello: {
       handler: "functions/handler.hello",
+      environment: {
+        ddb_table: { Ref: "DdbTable" },
+      },
       events: [
         {
           httpApi: {
@@ -28,6 +31,36 @@ const serverlessConfig: Serverless = {
           },
         },
       ],
+    },
+  },
+
+  resources: {
+    Resources: {
+      DdbTable: {
+        Type: "AWS::DynamoDB::Table",
+        Properties: {
+          AttributeDefinitions: [
+            {
+              AttributeName: "pk",
+              AttributeType: "S",
+            },
+            {
+              AttributeName: "sk",
+              AttributeType: "S",
+            },
+          ],
+          KeySchema: [
+            {
+              AttributeName: "pk",
+              KeyType: "HASH",
+            },
+            {
+              AttributeName: "sk",
+              KeyType: "RANGE",
+            },
+          ],
+        },
+      },
     },
   },
 };

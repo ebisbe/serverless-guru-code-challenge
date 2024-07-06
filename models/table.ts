@@ -3,38 +3,60 @@ import { Entity, Table } from "dynamodb-onetable";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 const client = new DynamoDBClient();
 
+const { ddb_table } = process.env;
+
 const MySchema = {
   version: "0.0.1",
   indexes: {
     primary: { hash: "pk", sort: "sk" },
   },
+  params: {
+    typeField: "__typename",
+    isoDates: true,
+    separator: "#",
+    timestamps: true,
+  },
   models: {
-    list: {
-      pk: { type: String, value: "account#${name}" },
+    List: {
+      pk: { type: String, value: "USER#${userId}" },
+      sk: { type: String, value: "LIST#${id}" },
+      id: { type: String, generate: "ulid" },
+      userId: { type: String, required: true },
+      name: { type: String, required: true },
+      description: { type: String },
+      totalValue: { type: Number, default: 0 },
+      totalItems: { type: Number, default: 0 },
+    },
+    Item: {
+      pk: { type: String, value: "LIST#${listId}" },
+      sk: { type: String, value: "ITEM#${id}" },
+      listId: { type: String },
+      id: { type: String, generate: "ulid" },
       name: { type: String },
+      description: { type: String },
+      value: { type: Number, default: 0 },
     },
-    item: {
-      pk: { type: String },
-      sk: { type: String },
-    },
-    buyer: {
-      pk: { type: String },
-      sk: { type: String },
+    Buyer: {
+      pk: { type: String, value: "ITEM#${itemId}" },
+      sk: { type: String, value: "BUYER#${userId}" },
+      userId: { type: String, required: true },
+      name: { type: String, required: true },
+      itemId: { type: String, required: true },
     },
   } as const,
 };
 
 const table = new Table({
   client: client,
-  name: "MyTable",
+  name: ddb_table,
   schema: MySchema,
 });
 
-export type List = Entity<typeof MySchema.models.list>;
-export const List = table.getModel("list");
+export type List = Entity<typeof MySchema.models.List>;
+export const List = table.getModel("List");
 
-export type Item = Entity<typeof MySchema.models.item>;
-export const Item = table.getModel("item");
+export type Item = Entity<typeof MySchema.models.Item>;
+export const Item = table.getModel("Item");
 
-export type Buyer = Entity<typeof MySchema.models.buyer>;
-export const Buyer = table.getModel("buyer");
+export type Buyer = Entity<typeof MySchema.models.Buyer>;
+export const Buyer = table.getModel("Buyer");
