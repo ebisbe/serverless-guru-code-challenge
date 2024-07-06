@@ -56,6 +56,7 @@ const MySchema = {
 
 const table = new Table({
   client: client,
+  partial: true,
   name: ddb_table,
   schema: MySchema,
 });
