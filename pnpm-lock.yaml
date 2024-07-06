@@ -11,22 +11,22 @@ importers:
       '@aws-sdk/client-dynamodb':
         specifier: ^3.609.0
         version: 3.609.0
-      '@types/serverless':
-        specifier: ^3.12.22
-        version: 3.12.22
       dynamodb-onetable:
         specifier: ^2.7.4
         version: 2.7.4
-      serverless:
-        specifier: ^4.1.11
-        version: 4.1.11
     devDependencies:
       '@eslint/js':
         specifier: ^9.6.0
         version: 9.6.0
+      '@types/aws-lambda':
+        specifier: ^8.10.140
+        version: 8.10.140
       '@types/node':
         specifier: ^20.14.10
         version: 20.14.10
+      '@types/serverless':
+        specifier: ^3.12.22
+        version: 3.12.22
       eslint:
         specifier: 9.x
         version: 9.6.0
@@ -36,6 +36,9 @@ importers:
       prettier:
         specifier: 3.3.2
         version: 3.3.2
+      serverless:
+        specifier: ^4.1.11
+        version: 4.1.11
       typescript-eslint:
         specifier: ^7.15.0
         version: 7.15.0(eslint@9.6.0)(typescript@5.5.3)
@@ -394,6 +397,9 @@ packages:
   '@smithy/util-waiter@3.1.2':
     resolution: {integrity: sha512-4pP0EV3iTsexDx+8PPGAKCQpd/6hsQBaQhqWzU4hqKPHN5epPsxKbvUTIiYIHTxaKt6/kEaqPBpu/ufvfbrRzw==}
     engines: {node: '>=16.0.0'}
+
+  '@types/aws-lambda@8.10.140':
+    resolution: {integrity: sha512-4Dh3dk2TUcbdfHrX0Al90mNGJDvA9NBiTQPzbrjGi/dLxzKCGOYgT8YQ47jUKNFALkAJAadifq0pzyjIUlhVhg==}
 
   '@types/node@20.14.10':
     resolution: {integrity: sha512-MdiXf+nDuMvY0gJKxyfZ7/6UFsETO7mGKF54MVD/ekJS6HdFtpZFBgrh6Pseu64XTb2MLyFPlbW6hj8HYRQNOQ==}
@@ -1747,6 +1753,8 @@ snapshots:
       '@smithy/abort-controller': 3.1.1
       '@smithy/types': 3.3.0
       tslib: 2.6.3
+
+  '@types/aws-lambda@8.10.140': {}
 
   '@types/node@20.14.10':
     dependencies:

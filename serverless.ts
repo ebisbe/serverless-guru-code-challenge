@@ -18,16 +18,58 @@ const serverlessConfig: Serverless = {
   },
 
   functions: {
-    hello: {
-      handler: "functions/handler.hello",
+    createList: {
+      handler: "functions/list.create",
       environment: {
         ddb_table: { Ref: "DdbTable" },
       },
       events: [
         {
           httpApi: {
-            path: "/",
+            path: "/list",
+            method: "post",
+          },
+        },
+      ],
+    },
+    getList: {
+      handler: "functions/list.get",
+      environment: {
+        ddb_table: { Ref: "DdbTable" },
+      },
+      events: [
+        {
+          httpApi: {
+            path: "/list/{id}",
             method: "get",
+          },
+        },
+      ],
+    },
+    updateList: {
+      handler: "functions/list.update",
+      environment: {
+        ddb_table: { Ref: "DdbTable" },
+      },
+      events: [
+        {
+          httpApi: {
+            path: "/list/{id}",
+            method: "patch",
+          },
+        },
+      ],
+    },
+    removeList: {
+      handler: "functions/list.remove",
+      environment: {
+        ddb_table: { Ref: "DdbTable" },
+      },
+      events: [
+        {
+          httpApi: {
+            path: "/list/{id}",
+            method: "delete",
           },
         },
       ],
