@@ -17,6 +17,9 @@ importers:
       '@middy/http-error-handler':
         specifier: ^5.4.3
         version: 5.4.3
+      '@middy/http-json-body-parser':
+        specifier: ^5.4.3
+        version: 5.4.3
       dynamodb-onetable:
         specifier: ^2.7.4
         version: 2.7.4
@@ -511,6 +514,10 @@ packages:
 
   '@middy/http-error-handler@5.4.3':
     resolution: {integrity: sha512-UiHoo6Xj8JgY+gQ2/2eLhaPBo+JIc1Ed4AYzqK8bkPfbeYUfMLT5Sk2qLtwQMVDGbSyfHUjgKh8Fanur5EZECQ==}
+    engines: {node: '>=18'}
+
+  '@middy/http-json-body-parser@5.4.3':
+    resolution: {integrity: sha512-PopnytFkDcVmXlBiIx8UIgId5HC6GYas1XuDxnjsa31lewgQ4Q2Ty9tpz9wP63Eo7rYpv/1fZBgEJMai3xzajQ==}
     engines: {node: '>=18'}
 
   '@middy/util@5.4.2':
@@ -2954,6 +2961,10 @@ snapshots:
       '@datastream/core': 0.0.36
 
   '@middy/http-error-handler@5.4.3':
+    dependencies:
+      '@middy/util': 5.4.2
+
+  '@middy/http-json-body-parser@5.4.3':
     dependencies:
       '@middy/util': 5.4.2
 
