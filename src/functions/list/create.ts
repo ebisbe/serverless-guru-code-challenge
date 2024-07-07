@@ -1,9 +1,10 @@
-import { Handler, APIGatewayProxyEventV2 } from "aws-lambda";
-import { List } from "../../models/table";
-import { z } from "zod";
 import middy from "@middy/core";
 import httpErrorHandler from "@middy/http-error-handler";
 import httpJsonBodyParser from "@middy/http-json-body-parser";
+import { APIGatewayProxyEventV2, Handler } from "aws-lambda";
+import { z } from "zod";
+
+import { List } from "../../models/table";
 import { HttpError } from "../../utils/httpError";
 import { ValidationError } from "../../utils/validationError";
 

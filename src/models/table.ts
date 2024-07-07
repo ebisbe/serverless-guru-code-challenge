@@ -1,6 +1,5 @@
-import { Entity, Table } from "dynamodb-onetable";
-
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { Entity, Table } from "dynamodb-onetable";
 const client = new DynamoDBClient();
 
 const { ddb_table } = process.env;

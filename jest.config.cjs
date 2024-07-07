@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-const esModules = ["@middy"].join("|")
+const esModules = ["@middy"].join("|");
 
 /** @type {import('jest').Config} */
 const config = {
@@ -103,9 +103,9 @@ const config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  preset: 'ts-jest',
+  preset: "ts-jest",
 
-  extensionsToTreatAsEsm: ['.ts'],
+  extensionsToTreatAsEsm: [".ts"],
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -137,7 +137,7 @@ const config = {
   // runner: "jest-runner",
 
   // The paths to modules that run some code to configure or set up the testing environment before each test
-  setupFiles: ['dotenv/config'],
+  setupFiles: ["dotenv/config"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   // setupFilesAfterEnv: [],
@@ -182,9 +182,9 @@ const config = {
     "^.+\\.ts?$": [
       "ts-jest",
       {
-        useESM: true
-      }
-    ]
+        useESM: true,
+      },
+    ],
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
