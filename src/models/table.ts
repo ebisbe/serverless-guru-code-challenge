@@ -1,6 +1,16 @@
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { Entity, Table } from "dynamodb-onetable";
-const client = new DynamoDBClient();
+
+const config = {
+  maxRetries: 3,
+  convertEmptyValues: true,
+  ...(process.env.MOCK_DYNAMODB_ENDPOINT && {
+    endpoint: process.env.MOCK_DYNAMODB_ENDPOINT,
+    sslEnabled: false,
+    region: "local",
+  }),
+};
+export const client = new DynamoDBClient(config);
 
 const { ddb_table } = process.env;
 
