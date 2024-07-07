@@ -1,12 +1,13 @@
 import { Handler, APIGatewayProxyEventV2 } from "aws-lambda";
 import { List } from "../../models/table";
 import { z } from "zod";
+import middy from "@middy/core";
+import httpErrorHandler from "@middy/http-error-handler";
+import { HttpError } from "../../utils/httpError";
 
-export const handler: Handler<APIGatewayProxyEventV2> = async (event) => {
-  console.log("event", event.body, event.pathParameters);
-
+const createListHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
   if (!event.body) {
-    throw new Error("Invalid request. Missing body params.");
+    throw new HttpError(406, "Invalid request. Missing body params.");
   }
 
   const listSchema = z.object({
@@ -27,3 +28,7 @@ export const handler: Handler<APIGatewayProxyEventV2> = async (event) => {
     body: JSON.stringify(createdList),
   };
 };
+
+export const handler = middy()
+  .use(httpErrorHandler({ logger: false }))
+  .handler(createListHandler);
