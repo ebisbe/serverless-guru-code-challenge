@@ -13,8 +13,8 @@ describe("CREATE List", () => {
 
     expect(response).toStrictEqual({
       statusCode: 400,
-      headers: { "Content-Type": "text/plain" },
-      body: "Invalid request. Missing body params.",
+      headers: { "Content-Type": "application/json" },
+      body: '{"issues":[{"code":"invalid_type","expected":"object","received":"null","path":[],"message":"Expected object, received null"}],"name":"ZodError"}',
     });
   });
 

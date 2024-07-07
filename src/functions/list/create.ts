@@ -5,14 +5,9 @@ import { APIGatewayProxyEventV2, Handler } from "aws-lambda";
 import { z } from "zod";
 
 import { List } from "../../models/table";
-import { HttpError } from "../../utils/httpError";
 import { ValidationError } from "../../utils/validationError";
 
 const createListHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
-  if (!event.body) {
-    throw new HttpError(400, "Invalid request. Missing body params.");
-  }
-
   const listSchema = z.object({
     userId: z.string(),
     name: z.string(),
