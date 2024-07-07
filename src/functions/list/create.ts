@@ -20,8 +20,6 @@ const createListHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
   }
 
   const createdList = await List.create(list.data);
-  delete createdList.pk;
-  delete createdList.sk;
 
   return {
     statusCode: 200,

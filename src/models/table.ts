@@ -20,8 +20,7 @@ const MySchema = {
     primary: { hash: "pk", sort: "sk" },
   },
   params: {
-    typeField: "__typename",
-    isoDates: true,
+    typeField: "__typeName",
     separator: "#",
     timestamps: true,
     createdField: "createdAt",
@@ -37,8 +36,8 @@ const MySchema = {
       description: { type: String },
       totalValue: { type: Number, default: 0 },
       totalItems: { type: Number, default: 0 },
-      createdAt: { type: String },
-      updatedAt: { type: String },
+      createdAt: { type: Date },
+      updatedAt: { type: Date },
     },
     Item: {
       pk: { type: String, value: "LIST#${listId}" },
@@ -48,8 +47,8 @@ const MySchema = {
       name: { type: String },
       description: { type: String },
       value: { type: Number, default: 0 },
-      createdAt: { type: String },
-      updatedAt: { type: String },
+      createdAt: { type: Date },
+      updatedAt: { type: Date },
     },
     Buyer: {
       pk: { type: String, value: "ITEM#${itemId}" },
@@ -57,8 +56,8 @@ const MySchema = {
       userId: { type: String, required: true },
       name: { type: String, required: true },
       itemId: { type: String, required: true },
-      createdAt: { type: String },
-      updatedAt: { type: String },
+      createdAt: { type: Date },
+      updatedAt: { type: Date },
     },
   } as const,
 };
