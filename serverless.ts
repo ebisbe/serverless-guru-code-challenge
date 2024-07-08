@@ -100,7 +100,7 @@ const serverlessConfig: Serverless = {
       events: [
         {
           httpApi: {
-            path: "/list/{id}/item/{id}",
+            path: "/list/{listId}/item/{id}",
             method: "patch",
           },
         },
@@ -112,7 +112,7 @@ const serverlessConfig: Serverless = {
       events: [
         {
           httpApi: {
-            path: "/list/{id}/item/{id}",
+            path: "/list/{listId}/item/{id}",
             method: "delete",
           },
         },
