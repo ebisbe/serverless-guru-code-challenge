@@ -4,20 +4,21 @@ import jsonBodyParser from "@middy/http-json-body-parser";
 import { APIGatewayProxyEventV2, Handler } from "aws-lambda";
 import { z } from "zod";
 
-import { List } from "../../models/table";
+import { Item } from "../../models/table";
 import { ValidationError } from "../../utils/validationError";
 
 const removeHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
-  const listSchema = z.object({
+  const itemSchema = z.object({
     id: z.string(),
+    listId: z.string(),
   });
 
-  const list = listSchema.safeParse(event.pathParameters);
-  if (!list.success) {
-    throw new ValidationError(400, list.error);
+  const item = itemSchema.safeParse(event.pathParameters);
+  if (!item.success) {
+    throw new ValidationError(400, item.error);
   }
 
-  await List.remove(list.data);
+  await Item.remove(item.data);
 
   return {
     statusCode: 200,
