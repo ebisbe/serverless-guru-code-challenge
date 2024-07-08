@@ -1,5 +1,9 @@
 import type { Serverless } from "serverless/aws";
 
+const environment = {
+  ddb_table: { Ref: "DdbTable" },
+};
+
 const serverlessConfig: Serverless = {
   org: "skedr",
   app: "code-challenge",
@@ -20,9 +24,7 @@ const serverlessConfig: Serverless = {
   functions: {
     createList: {
       handler: "src/functions/list/create.handler",
-      environment: {
-        ddb_table: { Ref: "DdbTable" },
-      },
+      environment,
       events: [
         {
           httpApi: {
@@ -34,9 +36,7 @@ const serverlessConfig: Serverless = {
     },
     getList: {
       handler: "src/functions/list/get.handler",
-      environment: {
-        ddb_table: { Ref: "DdbTable" },
-      },
+      environment,
       events: [
         {
           httpApi: {
@@ -48,9 +48,7 @@ const serverlessConfig: Serverless = {
     },
     updateList: {
       handler: "src/functions/list/update.handler",
-      environment: {
-        ddb_table: { Ref: "DdbTable" },
-      },
+      environment,
       events: [
         {
           httpApi: {
@@ -62,9 +60,7 @@ const serverlessConfig: Serverless = {
     },
     removeList: {
       handler: "src/functions/list/remove.handler",
-      environment: {
-        ddb_table: { Ref: "DdbTable" },
-      },
+      environment,
       events: [
         {
           httpApi: {
