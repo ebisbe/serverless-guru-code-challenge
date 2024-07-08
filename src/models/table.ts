@@ -28,10 +28,9 @@ const MySchema = {
   },
   models: {
     List: {
-      pk: { type: String, value: "USER#${userId}" },
+      pk: { type: String, value: "LIST#${id}" },
       sk: { type: String, value: "LIST#${id}" },
       id: { type: String, generate: "ulid" },
-      userId: { type: String, required: true },
       name: { type: String, required: true },
       description: { type: String },
       totalValue: { type: Number, default: 0 },

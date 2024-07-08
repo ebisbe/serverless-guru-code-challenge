@@ -9,7 +9,6 @@ import { ValidationError } from "../../utils/validationError";
 
 const createListHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
   const listSchema = z.object({
-    userId: z.string(),
     name: z.string(),
     description: z.string(),
   }) satisfies z.ZodType<List>;
