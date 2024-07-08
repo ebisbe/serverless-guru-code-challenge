@@ -37,7 +37,7 @@ describe("CREATE List", () => {
     expect(body.id).toMatch(/^[A-Z0-9]{26}$/);
     expect(body.name).toBe("My Wedding List");
     expect(body.description).toBe("This is my wedding gift list.");
-    expect(body.totalValue).toBe(0);
+    expect(body.totalPrice).toBe(0);
     expect(body.totalItems).toBe(0);
 
     const dateRegExp =
