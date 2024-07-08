@@ -70,6 +70,54 @@ const serverlessConfig: Serverless = {
         },
       ],
     },
+    createItem: {
+      handler: "src/functions/item/create.handler",
+      environment,
+      events: [
+        {
+          httpApi: {
+            path: "/list/{listId}/item",
+            method: "post",
+          },
+        },
+      ],
+    },
+    getItem: {
+      handler: "src/functions/item/get.handler",
+      environment,
+      events: [
+        {
+          httpApi: {
+            path: "/list/{listId}/item/{id}",
+            method: "get",
+          },
+        },
+      ],
+    },
+    updateItem: {
+      handler: "src/functions/item/update.handler",
+      environment,
+      events: [
+        {
+          httpApi: {
+            path: "/list/{id}/item/{id}",
+            method: "patch",
+          },
+        },
+      ],
+    },
+    removeItem: {
+      handler: "src/functions/item/remove.handler",
+      environment,
+      events: [
+        {
+          httpApi: {
+            path: "/list/{id}/item/{id}",
+            method: "delete",
+          },
+        },
+      ],
+    },
   },
 
   resources: {
