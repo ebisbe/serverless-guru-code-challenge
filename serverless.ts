@@ -1,10 +1,10 @@
-import type { Serverless } from "serverless/aws";
+import { ServerlessExtended } from "./src/types/extendedSlsTypes";
 
 const environment = {
   ddb_table: { Ref: "DdbTable" },
 };
 
-const serverlessConfig: Serverless = {
+const serverlessConfig: ServerlessExtended = {
   org: "skedr",
   app: "code-challenge",
 

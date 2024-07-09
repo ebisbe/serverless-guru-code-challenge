@@ -27,6 +27,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@awboost/cfntypes':
+        specifier: ^0.100.9
+        version: 0.100.9
       '@eslint/js':
         specifier: ^9.6.0
         version: 9.6.0
@@ -87,6 +90,9 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@awboost/cfntypes@0.100.9':
+    resolution: {integrity: sha512-2YX0rHtJ2LIhNqBeEr53nzeXGW0F3yTd+IQbIuAdoSWkNmH/E/ddUOGpdMTPre/+dbkf/mDWsPTPBGDS6yByWA==}
 
   '@aws-crypto/sha256-browser@5.2.0':
     resolution: {integrity: sha512-AXfN/lGotSQwu6HNcEsIASo7kWXZ5HYWvfOmSNKDsEqC4OashTp8alTmaz+F7TC2L083SFv5RdB+qU3Vs1kZqw==}
@@ -2438,6 +2444,8 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.5
       '@jridgewell/trace-mapping': 0.3.25
+
+  '@awboost/cfntypes@0.100.9': {}
 
   '@aws-crypto/sha256-browser@5.2.0':
     dependencies:
