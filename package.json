@@ -16,6 +16,7 @@
     "@middy/http-error-handler": "^5.4.3",
     "@middy/http-json-body-parser": "^5.4.3",
     "dynamodb-onetable": "^2.7.4",
+    "lodash": "^4.17.21",
     "zod": "^3.23.8"
   },
   "devDependencies": {
@@ -23,6 +24,7 @@
     "@eslint/js": "^9.6.0",
     "@types/aws-lambda": "^8.10.140",
     "@types/jest": "^29.5.12",
+    "@types/lodash": "^4.17.6",
     "@types/node": "^20.14.10",
     "@types/serverless": "^3.12.22",
     "dotenv": "^16.4.5",

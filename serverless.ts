@@ -1,3 +1,4 @@
+import resources from "./src/resources";
 import { ServerlessExtended } from "./src/types/extendedSlsTypes";
 
 const environment = {
@@ -120,36 +121,7 @@ const serverlessConfig: ServerlessExtended = {
     },
   },
 
-  resources: {
-    Resources: {
-      DdbTable: {
-        Type: "AWS::DynamoDB::Table",
-        Properties: {
-          AttributeDefinitions: [
-            {
-              AttributeName: "pk",
-              AttributeType: "S",
-            },
-            {
-              AttributeName: "sk",
-              AttributeType: "S",
-            },
-          ],
-          KeySchema: [
-            {
-              AttributeName: "pk",
-              KeyType: "HASH",
-            },
-            {
-              AttributeName: "sk",
-              KeyType: "RANGE",
-            },
-          ],
-          BillingMode: "PAY_PER_REQUEST",
-        },
-      },
-    },
-  },
+  resources,
 };
 
 export default serverlessConfig;
