@@ -26,6 +26,9 @@ export const ddbResources: ServerlessExtended["resources"] = {
           },
         ],
         BillingMode: "PAY_PER_REQUEST",
+        StreamSpecification: {
+          StreamViewType: "NEW_AND_OLD_IMAGES",
+        },
       },
     },
   },
