@@ -1,10 +1,7 @@
 import resources from "./src/resources";
 import { WeddingTable } from "./src/resources/ddb";
-import {
-  getAttribute,
-  getRef,
-  ServerlessExtended,
-} from "./src/types/extendedSlsTypes";
+import { stepFunctions } from "./src/stepFunctions";
+import { getAttribute, ServerlessExtended } from "./src/types/extendedSlsTypes";
 
 const environment = {
   ddb_table: getAttribute(WeddingTable, "Arn"),
@@ -28,7 +25,9 @@ const serverlessConfig: ServerlessExtended = {
     },
   },
 
-  plugins: ["serverless-iam-roles-per-function"],
+  plugins: ["serverless-iam-roles-per-function", "serverless-step-functions"],
+
+  stepFunctions,
 
   functions: {
     createList: {
