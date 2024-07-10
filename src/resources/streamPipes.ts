@@ -48,29 +48,28 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
               ],
             },
           },
-          {
-            PolicyName: "TargetPolicy",
-            PolicyDocument: {
-              Version: "2012-10-17",
-              Statement: [
-                {
-                  Effect: "Allow",
-                  Action: ["events:PutEvents"],
-                  Resource: getAttribute("EventBus", "Arn"),
-                },
-                {
-                  Effect: "Allow",
-                  Action: [
-                    "states:StartExecution",
-                    "states:StartSyncExecution",
-                  ],
-                  Resource: [
-                    // TBD
-                  ],
-                },
-              ],
-            },
-          },
+          // {
+          //   PolicyName: "TargetPolicy",
+          //   PolicyDocument: {
+          //     Version: "2012-10-17",
+          //     Statement: [
+          //       {
+          //         Effect: "Allow",
+          //         Action: ["events:PutEvents"],
+          //         Resource: getAttribute("EventBus", "Arn"),
+          //       },
+          //       {
+          //         Effect: "Allow",
+          //         Action: [
+          //           "states:StartExecution",
+          //           "states:StartSyncExecution",
+          //         ],
+          //         Resource: [
+          //         ],
+          //       },
+          //     ],
+          //   },
+          // },
         ],
       },
     },
