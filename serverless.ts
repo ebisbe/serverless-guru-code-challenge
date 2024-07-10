@@ -1,9 +1,13 @@
 import resources from "./src/resources";
 import { WeddingTable } from "./src/resources/ddb";
-import { getRef, ServerlessExtended } from "./src/types/extendedSlsTypes";
+import {
+  getAttribute,
+  getRef,
+  ServerlessExtended,
+} from "./src/types/extendedSlsTypes";
 
 const environment = {
-  ddb_table: getRef(WeddingTable),
+  ddb_table: getAttribute(WeddingTable, "Arn"),
 };
 
 const serverlessConfig: ServerlessExtended = {
@@ -42,7 +46,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:PutItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -61,7 +65,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:GetItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -80,7 +84,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:UpdateItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -99,7 +103,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:DeleteItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -118,7 +122,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:PutItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -137,7 +141,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:GetItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -156,7 +160,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:UpdateItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
@@ -175,7 +179,7 @@ const serverlessConfig: ServerlessExtended = {
         {
           Effect: "Allow",
           Action: ["dynamodb:DeleteItem"],
-          Resource: getRef(WeddingTable),
+          Resource: getAttribute(WeddingTable, "Arn"),
         },
       ],
     },
