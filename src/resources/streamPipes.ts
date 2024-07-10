@@ -3,6 +3,7 @@ import {
   getJoin,
   ServerlessExtended,
 } from "../types/extendedSlsTypes";
+import { WeddingTable } from "./ddb";
 
 export const streamPipesResource: ServerlessExtended["resources"] = {
   Resources: {
@@ -42,7 +43,7 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
                     "dynamodb:GetShardIterator",
                     "dynamodb:ListStreams",
                   ],
-                  Resource: [getAttribute("DdbTable", "StreamArn")],
+                  Resource: [getAttribute(WeddingTable, "StreamArn")],
                 },
               ],
             },
@@ -80,7 +81,7 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
       Properties: {
         Description: "Pipe to connect dynamoDB stream to step function",
         RoleArn: getAttribute("PipeRole", "Arn"),
-        Source: getAttribute("DdbTable", "StreamArn"),
+        Source: getAttribute(WeddingTable, "StreamArn"),
         SourceParameters: {
           DynamoDBStreamParameters: {
             StartingPosition: "LATEST",

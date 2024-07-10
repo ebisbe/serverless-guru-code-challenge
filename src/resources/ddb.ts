@@ -1,8 +1,10 @@
 import { ServerlessExtended } from "../types/extendedSlsTypes";
 
+export const WeddingTable = "DdbTable";
+
 export const ddbResources: ServerlessExtended["resources"] = {
   Resources: {
-    DdbTable: {
+    [WeddingTable]: {
       Type: "AWS::DynamoDB::Table",
       Properties: {
         AttributeDefinitions: [

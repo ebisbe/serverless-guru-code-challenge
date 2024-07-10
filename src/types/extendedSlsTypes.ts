@@ -4,7 +4,7 @@ import {
   IAMRoleProps,
   PipesPipeProps,
 } from "@awboost/cfntypes";
-import type { Serverless } from "serverless/aws";
+import type { IamRoleStatement, Serverless } from "serverless/aws";
 
 export interface Resource<TType extends string, TProps = unknown> {
   Condition?: string | undefined;
@@ -43,6 +43,11 @@ export function getRef(name: string): string {
 }
 
 export type ServerlessExtended = Serverless & {
+  functions: {
+    [key: string]: {
+      iamRoleStatements?: IamRoleStatement[];
+    } & NonNullable<Serverless["functions"]>[string];
+  };
   resources?: {
     Resources?: {
       [k: string]: SlsResource;

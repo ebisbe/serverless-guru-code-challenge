@@ -1,8 +1,9 @@
 import resources from "./src/resources";
-import { ServerlessExtended } from "./src/types/extendedSlsTypes";
+import { WeddingTable } from "./src/resources/ddb";
+import { getRef, ServerlessExtended } from "./src/types/extendedSlsTypes";
 
 const environment = {
-  ddb_table: { Ref: "DdbTable" },
+  ddb_table: getRef(WeddingTable),
 };
 
 const serverlessConfig: ServerlessExtended = {
@@ -23,6 +24,8 @@ const serverlessConfig: ServerlessExtended = {
     },
   },
 
+  plugins: ["serverless-iam-roles-per-function"],
+
   functions: {
     createList: {
       handler: "src/functions/list/create.handler",
@@ -33,6 +36,13 @@ const serverlessConfig: ServerlessExtended = {
             path: "/list",
             method: "post",
           },
+        },
+      ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:PutItem"],
+          Resource: getRef(WeddingTable),
         },
       ],
     },
@@ -47,6 +57,13 @@ const serverlessConfig: ServerlessExtended = {
           },
         },
       ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:GetItem"],
+          Resource: getRef(WeddingTable),
+        },
+      ],
     },
     updateList: {
       handler: "src/functions/list/update.handler",
@@ -57,6 +74,13 @@ const serverlessConfig: ServerlessExtended = {
             path: "/list/{id}",
             method: "patch",
           },
+        },
+      ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:UpdateItem"],
+          Resource: getRef(WeddingTable),
         },
       ],
     },
@@ -71,6 +95,13 @@ const serverlessConfig: ServerlessExtended = {
           },
         },
       ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:DeleteItem"],
+          Resource: getRef(WeddingTable),
+        },
+      ],
     },
     createItem: {
       handler: "src/functions/item/create.handler",
@@ -81,6 +112,13 @@ const serverlessConfig: ServerlessExtended = {
             path: "/list/{listId}/item",
             method: "post",
           },
+        },
+      ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:PutItem"],
+          Resource: getRef(WeddingTable),
         },
       ],
     },
@@ -95,6 +133,13 @@ const serverlessConfig: ServerlessExtended = {
           },
         },
       ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:GetItem"],
+          Resource: getRef(WeddingTable),
+        },
+      ],
     },
     updateItem: {
       handler: "src/functions/item/update.handler",
@@ -107,6 +152,13 @@ const serverlessConfig: ServerlessExtended = {
           },
         },
       ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:UpdateItem"],
+          Resource: getRef(WeddingTable),
+        },
+      ],
     },
     removeItem: {
       handler: "src/functions/item/remove.handler",
@@ -117,6 +169,13 @@ const serverlessConfig: ServerlessExtended = {
             path: "/list/{listId}/item/{id}",
             method: "delete",
           },
+        },
+      ],
+      iamRoleStatements: [
+        {
+          Effect: "Allow",
+          Action: ["dynamodb:DeleteItem"],
+          Resource: getRef(WeddingTable),
         },
       ],
     },
