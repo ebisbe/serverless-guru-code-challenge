@@ -22,6 +22,24 @@ type SlsResource =
   | Resource<"AWS::Pipes::Pipe", PipesPipeProps>;
 
 /**
+ * Generate a state machine name with the followin pattern: service-stage-name
+ * @param name string
+ * @returns
+ */
+export function nameHelper(name: string) {
+  return `\${self:service}-\${self:provider.stage}-${name}`;
+}
+
+/**
+ * Generates a logical id name similar to the original
+ * @param name string
+ * @returns
+ */
+export function idHelper(name: string) {
+  return `${name}StepFunctionsStateMachine`;
+}
+
+/**
  * Gets the attribute value.
  * @param resource The resource to get the attribute for.
  * @param name The name of the attribute to get.

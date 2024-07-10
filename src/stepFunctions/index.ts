@@ -1,5 +1,5 @@
 import { merge } from "lodash";
 
-import { incStream } from "./itemStream";
+import { itemStream } from "./itemStream";
 
-export const stepFunctions = merge(incStream);
+export const stepFunctions = merge(itemStream);

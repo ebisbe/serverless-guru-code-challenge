@@ -1,6 +1,9 @@
+import { ItemStream } from "../stepFunctions/itemStream";
 import {
   getAttribute,
   getJoin,
+  getRef,
+  idHelper,
   ServerlessExtended,
 } from "../types/extendedSlsTypes";
 import { WeddingTable } from "./ddb";
@@ -48,35 +51,34 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
               ],
             },
           },
-          // {
-          //   PolicyName: "TargetPolicy",
-          //   PolicyDocument: {
-          //     Version: "2012-10-17",
-          //     Statement: [
-          //       {
-          //         Effect: "Allow",
-          //         Action: ["events:PutEvents"],
-          //         Resource: getAttribute("EventBus", "Arn"),
-          //       },
-          //       {
-          //         Effect: "Allow",
-          //         Action: [
-          //           "states:StartExecution",
-          //           "states:StartSyncExecution",
-          //         ],
-          //         Resource: [
-          //         ],
-          //       },
-          //     ],
-          //   },
-          // },
+          {
+            PolicyName: "TargetPolicy",
+            PolicyDocument: {
+              Version: "2012-10-17",
+              Statement: [
+                {
+                  Effect: "Allow",
+                  Action: ["events:PutEvents"],
+                  Resource: getAttribute("EventBus", "Arn"),
+                },
+                {
+                  Effect: "Allow",
+                  Action: [
+                    "states:StartExecution",
+                    "states:StartSyncExecution",
+                  ],
+                  Resource: [getRef(idHelper(ItemStream))],
+                },
+              ],
+            },
+          },
         ],
       },
     },
 
     LogsStreamPipe: {
       Type: "AWS::Pipes::Pipe",
-      //DependsOn: [TBD],
+      DependsOn: [idHelper(ItemStream)],
       Properties: {
         Description: "Pipe to connect dynamoDB stream to step function",
         RoleArn: getAttribute("PipeRole", "Arn"),
