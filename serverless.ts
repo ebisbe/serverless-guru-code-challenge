@@ -12,6 +12,7 @@ const serverlessConfig: ServerlessExtended = {
   service: "code-challenge-5",
   provider: {
     name: "aws",
+    stage: "dev",
     runtime: "nodejs20.x",
   },
 
