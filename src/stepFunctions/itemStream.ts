@@ -19,7 +19,7 @@ export const itemStream: StepFunctions = {
       loggingConfig: {
         level: "ALL",
         includeExecutionData: true,
-        destinations: getAttribute("StepFunctionsLogGroup", "Arn"),
+        destinations: [getAttribute("StepFunctionsLogGroup", "Arn")],
       },
       definition: {
         Comment: "Update List totals ( price and total items )",
