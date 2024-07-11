@@ -22,6 +22,7 @@ const MySchema = {
   params: {
     typeField: "__typeName",
     separator: "#",
+    isoDates: true,
     timestamps: true,
     createdField: "createdAt",
     updatedField: "updatedAt",
