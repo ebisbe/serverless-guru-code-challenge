@@ -2,6 +2,7 @@ import {
   DynamoDBTableProps,
   EventsEventBusProps,
   IAMRoleProps,
+  LogsLogGroupProps,
   PipesPipeProps,
 } from "@awboost/cfntypes";
 import type { IamRoleStatement, Serverless } from "serverless/aws";
@@ -19,6 +20,7 @@ type SlsResource =
   | Resource<"AWS::DynamoDB::Table", DynamoDBTableProps>
   | Resource<"AWS::Events::EventBus", EventsEventBusProps>
   | Resource<"AWS::IAM::Role", IAMRoleProps>
+  | Resource<"AWS::Logs::LogGroup", LogsLogGroupProps>
   | Resource<"AWS::Pipes::Pipe", PipesPipeProps>;
 
 /**

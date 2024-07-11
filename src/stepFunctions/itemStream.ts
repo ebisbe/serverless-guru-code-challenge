@@ -1,15 +1,26 @@
+import StepFunctions from "serverless-step-functions";
+
 import { WeddingTable } from "../resources/ddb";
-import { getRef, idHelper, nameHelper } from "../types/extendedSlsTypes";
+import {
+  getAttribute,
+  getRef,
+  idHelper,
+  nameHelper,
+} from "../types/extendedSlsTypes";
 
 export const ItemStream = "ItemStream";
 
-export const itemStream = {
+export const itemStream: StepFunctions = {
   stateMachines: {
     [ItemStream]: {
       id: idHelper(ItemStream),
       name: nameHelper(ItemStream),
       type: "EXPRESS",
-      useExactVersion: true,
+      loggingConfig: {
+        level: "ALL",
+        includeExecutionData: true,
+        destinations: getAttribute("StepFunctionsLogGroup", "Arn"),
+      },
       definition: {
         Comment: "Update List totals ( price and total items )",
         StartAt: "Check event type",
