@@ -74,16 +74,23 @@ export const itemStream = {
             Type: "Task",
             Resource: "arn:aws:states:::dynamodb:updateItem",
             Parameters: {
-              TableName: "MyDynamoDBTable",
+              TableName: getRef(WeddingTable),
               Key: {
-                Column: {
-                  S: "MyEntry",
+                pk: {
+                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
+                },
+                sk: {
+                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
                 },
               },
-              UpdateExpression: "SET MyKey = :myValueRef",
+              UpdateExpression:
+                "SET totalPrice = totalPrice - :oldPrice + :newPrice",
               ExpressionAttributeValues: {
-                ":myValueRef": {
-                  S: "MyValue",
+                ":newPrice": {
+                  "N.$": "$.NewImage.price.N",
+                },
+                ":oldPrice": {
+                  "N.$": "$.OldImage.price.N",
                 },
               },
             },
@@ -93,16 +100,23 @@ export const itemStream = {
             Type: "Task",
             Resource: "arn:aws:states:::dynamodb:updateItem",
             Parameters: {
-              TableName: "MyDynamoDBTable",
+              TableName: getRef(WeddingTable),
               Key: {
-                Column: {
-                  S: "MyEntry",
+                pk: {
+                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
+                },
+                sk: {
+                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
                 },
               },
-              UpdateExpression: "SET MyKey = :myValueRef",
+              UpdateExpression:
+                "SET totalPrice = totalPrice - :itemPrice, totalItems = totalItems - :one",
               ExpressionAttributeValues: {
-                ":myValueRef": {
-                  S: "MyValue",
+                ":itemPrice": {
+                  "N.$": "$.NewImage.price.N",
+                },
+                ":one": {
+                  N: "1",
                 },
               },
             },

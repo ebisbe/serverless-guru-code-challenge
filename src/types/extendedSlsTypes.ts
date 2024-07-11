@@ -57,6 +57,11 @@ export function getJoin(delimiter: string, stringsList: string[]): string {
   return { "Fn::Join": [delimiter, stringsList] } as unknown as string;
 }
 
+/**
+ * Returns a CF reference as string
+ * @param name string
+ * @returns string
+ */
 export function getRef(name: string): string {
   return { Ref: name } as unknown as string;
 }
