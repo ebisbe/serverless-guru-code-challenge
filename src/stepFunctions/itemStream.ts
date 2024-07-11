@@ -25,7 +25,7 @@ export const itemStream = {
               {
                 Variable: "$.eventName",
                 StringEquals: "MODIFY",
-                Next: "Compute price difference",
+                Next: "Update totalPrice",
               },
               {
                 Variable: "$.eventName",
@@ -35,10 +35,6 @@ export const itemStream = {
             ],
             OutputPath: "$.dynamodb",
             Default: "Fail",
-          },
-          "Compute price difference": {
-            Type: "Pass",
-            Next: "Update totalPrice",
           },
           "Increment totalPrice and totalItems": {
             Type: "Task",
