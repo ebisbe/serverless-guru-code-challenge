@@ -15,7 +15,7 @@ jobs:
         id: branch_name
         run: |
           if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "STAGE=pr_${{ github.event.pull_request.number }}" >> $GITHUB_ENV
+            echo "STAGE=pr${{ github.event.pull_request.number }}" >> $GITHUB_ENV
           else
             echo "STAGE=dev" >> $GITHUB_ENV
           fi
