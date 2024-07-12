@@ -16,6 +16,9 @@ const serverlessConfig: ServerlessExtended = {
     name: "aws",
     stage: "dev",
     runtime: "nodejs20.x",
+    logs: {
+      httpApi: true,
+    },
   },
 
   build: {
