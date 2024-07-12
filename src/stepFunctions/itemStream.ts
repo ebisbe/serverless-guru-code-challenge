@@ -107,17 +107,17 @@ export const itemStream: StepFunctions = {
               TableName: getRef(WeddingTable),
               Key: {
                 pk: {
-                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
+                  "S.$": "States.Format('LIST#{}',$.OldImage.listId.S)",
                 },
                 sk: {
-                  "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
+                  "S.$": "States.Format('LIST#{}',$.OldImage.listId.S)",
                 },
               },
               UpdateExpression:
                 "SET totalPrice = totalPrice - :itemPrice, totalItems = totalItems - :one",
               ExpressionAttributeValues: {
                 ":itemPrice": {
-                  "N.$": "$.NewImage.price.N",
+                  "N.$": "$.OldImage.price.N",
                 },
                 ":one": {
                   N: "1",
