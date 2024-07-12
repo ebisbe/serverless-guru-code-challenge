@@ -11,6 +11,7 @@ const updateHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
   const itemSchema = z.object({
     name: z.string(),
     description: z.string(),
+    price: z.number(),
   }) satisfies z.ZodType<Item>;
 
   const item = itemSchema.safeParse(event.body);

@@ -22,6 +22,7 @@ describe("UPDATE Item", () => {
       listId: "listId",
       name: "<NAME>",
       description: "This is a test item",
+      price: 25,
     });
 
     const response = await handler({
@@ -39,5 +40,6 @@ describe("UPDATE Item", () => {
     const body = JSON.parse(response.body);
     expect(body.name).toBe("Name v2");
     expect(body.description).toBe("Description v2");
+    expect(body.price).toBe(16);
   });
 });
