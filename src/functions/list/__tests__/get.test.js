@@ -5,10 +5,7 @@ import { handler } from "../get";
 
 describe("GET List", () => {
   it("requires path parameter ID", async () => {
-    const response = await handler({
-      headers: { "Content-Type": "application/json" },
-      body: null,
-    });
+    const response = await handler({});
 
     expect(response).toStrictEqual({
       statusCode: 400,

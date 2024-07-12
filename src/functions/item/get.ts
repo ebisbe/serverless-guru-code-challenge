@@ -1,6 +1,5 @@
 import middy from "@middy/core";
 import httpErrorHandler from "@middy/http-error-handler";
-import httpJsonBodyParser from "@middy/http-json-body-parser";
 import { APIGatewayProxyEventV2, Handler } from "aws-lambda";
 import { z } from "zod";
 
@@ -31,5 +30,4 @@ const getItemHandler: Handler<APIGatewayProxyEventV2> = async (event) => {
 
 export const handler = middy()
   .use(httpErrorHandler({ logger: false }))
-  .use(httpJsonBodyParser())
   .handler(getItemHandler);
