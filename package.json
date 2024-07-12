@@ -4,8 +4,8 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --watch --config jest.config.ddb.cjs",
-    "test-e2e": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.ddb.cjs",
+    "test-e2e": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
   "keywords": [],
   "author": "",
