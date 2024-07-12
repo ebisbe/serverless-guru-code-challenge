@@ -1,6 +1,7 @@
 import {
   DynamoDBTableProps,
   EventsEventBusProps,
+  EventsRuleProps,
   IAMRoleProps,
   LogsLogGroupProps,
   PipesPipeProps,
@@ -21,6 +22,7 @@ type SlsResource =
   | Resource<"AWS::Events::EventBus", EventsEventBusProps>
   | Resource<"AWS::IAM::Role", IAMRoleProps>
   | Resource<"AWS::Logs::LogGroup", LogsLogGroupProps>
+  | Resource<"AWS::Events::Rule", EventsRuleProps>
   | Resource<"AWS::Pipes::Pipe", PipesPipeProps>;
 
 /**
