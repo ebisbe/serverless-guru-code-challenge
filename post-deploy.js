@@ -1,34 +1,22 @@
 import { execSync } from "child_process";
 import { writeFileSync } from "fs";
-import { parseArgs } from "util";
 
-const args = process.argv;
-const options = {
-  name: {
-    type: "string",
-  },
-  region: {
-    type: "string",
-  },
-};
-const { values } = parseArgs({
-  args,
-  options,
-  allowPositionals: true,
-});
+try {
+  // Execute `sls info --verbose` and capture output
+  const output = execSync("pnpm sls info --verbose", { encoding: "utf-8" });
 
-// Execute the AWS CLI command to get the CloudFormation outputs
-const output = execSync(
-  `aws cloudformation describe-stacks --stack-name ${values.name} --region ${values.region} --query "Stacks[0].Outputs" --output json`,
-);
+  // Extract the API Gateway URL from the output
+  const match = output.match(/HttpApiUrl: (.*)/);
+  if (match && match.length > 1) {
+    const apiGatewayUrl = match[1].trim();
 
-// Parse the output
-const outputs = JSON.parse(output);
+    // Write the URL to the .env file
+    writeFileSync(".env.e2e", `API_GATEWAY_URL=${apiGatewayUrl}\n`);
 
-// Find the API Gateway URL
-const apiGatewayUrl = outputs.find(
-  (o) => o.OutputKey === "HttpApiUrl",
-).OutputValue;
-
-// Write the URL to the .env file
-writeFileSync(".env.e2e", `API_GATEWAY_URL=${apiGatewayUrl}\n`);
+    console.log(`API Gateway URL: ${apiGatewayUrl}`);
+  } else {
+    console.error("Failed to extract API Gateway URL from `sls info` output.");
+  }
+} catch (error) {
+  console.error("Error executing `sls info` command:", error);
+}
