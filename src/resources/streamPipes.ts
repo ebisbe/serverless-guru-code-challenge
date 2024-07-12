@@ -136,13 +136,6 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
         EventPattern: {
           source: ["challenge.code.dynamodb.stream"],
           "detail-type": ["item"],
-          detail: {
-            dynamodb: {
-              NewImage: {
-                __typeName: { S: ["Item"] },
-              },
-            },
-          },
         },
         State: "ENABLED",
         Targets: [
