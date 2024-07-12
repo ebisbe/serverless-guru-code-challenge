@@ -101,9 +101,18 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
                 Pattern: JSON.stringify({
                   eventName: ["INSERT", "MODIFY", "REMOVE"],
                   dynamodb: {
-                    NewImage: {
-                      __typeName: { S: ["Item"] },
-                    },
+                    $or: [
+                      {
+                        NewImage: {
+                          __typeName: { S: ["Item"] },
+                        },
+                      },
+                      {
+                        OldImage: {
+                          __typeName: { S: ["Item"] },
+                        },
+                      },
+                    ],
                   },
                 }),
               },
