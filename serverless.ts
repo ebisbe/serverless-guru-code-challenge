@@ -21,7 +21,7 @@ const serverlessConfig: ServerlessExtended = {
 
   provider: {
     name: "aws",
-    stage: "dev",
+    stage: "${opt:stage, 'dev'}",
     region: "us-east-1",
     runtime: "nodejs20.x",
     logs: {
