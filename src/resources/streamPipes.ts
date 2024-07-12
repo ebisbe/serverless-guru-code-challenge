@@ -146,10 +146,8 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
                 eventName: "$.detail.eventName",
                 dynamodb: "$.detail.dynamodb",
               },
-              InputTemplate: JSON.stringify({
-                eventName: "<eventName>",
-                dynamodb: "<dynamodb>",
-              }),
+              InputTemplate:
+                '{ eventName: "<eventName>", dynamodb: <dynamodb> }',
             },
             DeadLetterConfig: {
               Arn: getAttribute("EventsDLQueue", "Arn"),
