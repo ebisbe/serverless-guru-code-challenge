@@ -115,7 +115,7 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
       },
     },
 
-    SyncNextPhotoStreamLogRule: {
+    StreamItemRule: {
       Type: "AWS::Events::Rule",
       Properties: {
         EventBusName: getRef("EventBus"),
@@ -136,6 +136,16 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
             Id: `invoke-${nameHelper(ItemStream)}`,
             Arn: getAttribute(idHelper(ItemStream), "Arn"),
             RoleArn: getAttribute("TargetStreamIAMrole", "Arn"),
+            InputTransformer: {
+              InputPathsMap: {
+                eventName: "$.detail.eventName",
+                dynamodb: "$.detail.dynamodb",
+              },
+              InputTemplate: JSON.stringify({
+                eventName: "<eventName>",
+                dynamodb: "<dynamodb>",
+              }),
+            },
           },
         ],
       },
