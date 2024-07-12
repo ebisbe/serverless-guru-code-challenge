@@ -5,6 +5,7 @@ import {
   IAMRoleProps,
   LogsLogGroupProps,
   PipesPipeProps,
+  SQSQueueProps,
 } from "@awboost/cfntypes";
 import type { IamRoleStatement, Serverless } from "serverless/aws";
 import type StepFunctions from "serverless-step-functions";
@@ -22,6 +23,7 @@ type SlsResource =
   | Resource<"AWS::Events::EventBus", EventsEventBusProps>
   | Resource<"AWS::IAM::Role", IAMRoleProps>
   | Resource<"AWS::Logs::LogGroup", LogsLogGroupProps>
+  | Resource<"AWS::SQS::Queue", SQSQueueProps>
   | Resource<"AWS::Events::Rule", EventsRuleProps>
   | Resource<"AWS::Pipes::Pipe", PipesPipeProps>;
 

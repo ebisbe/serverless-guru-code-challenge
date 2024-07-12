@@ -18,6 +18,11 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
       },
     },
 
+    EventsDLQueue: {
+      Type: "AWS::SQS::Queue",
+      Properties: {},
+    },
+
     PipeRole: {
       Type: "AWS::IAM::Role",
       Properties: {
@@ -145,6 +150,9 @@ export const streamPipesResource: ServerlessExtended["resources"] = {
                 eventName: "<eventName>",
                 dynamodb: "<dynamodb>",
               }),
+            },
+            DeadLetterConfig: {
+              Arn: getAttribute("EventsDLQueue", "Arn"),
             },
           },
         ],
