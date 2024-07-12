@@ -3,6 +3,8 @@
  * https://jestjs.io/docs/configuration
  */
 
+const esModules = ["@middy"].join("|");
+
 /** @type {import('jest').Config} */
 const config = {
   // All imported modules in your tests should be mocked automatically
@@ -101,7 +103,9 @@ const config = {
   // notifyMode: "failure-change",
 
   // A preset that is used as a base for Jest's configuration
-  //preset: "jest-dynalite",
+  preset: "jest-dynalite",
+
+  extensionsToTreatAsEsm: [".ts"],
 
   // Run tests from one or more projects
   // projects: undefined,
@@ -136,7 +140,7 @@ const config = {
   setupFiles: ["dotenv/config"],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: ["<rootDir>/..."],
+  setupFilesAfterEnv: ["<rootDir>/setupFilesAfterEnv_dynalite.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -154,7 +158,7 @@ const config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ["<rootDir>/__tests__/**/*.[jt]s?(x)"],
+  testMatch: ["**/functions/**/__tests__/**/*.[jt]s?(x)"],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -171,10 +175,17 @@ const config = {
   // testRunner: "jest-circus/runner",
 
   // A map from regular expressions to paths to transformers
-  transform: {},
+  transform: {
+    "^.+\\.ts?$": [
+      "ts-jest",
+      {
+        useESM: true,
+      },
+    ],
+  },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [`node_modules/(?!${esModules})`],
+  transformIgnorePatterns: [`node_modules/(?!${esModules})`],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
