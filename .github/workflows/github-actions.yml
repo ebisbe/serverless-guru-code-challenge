@@ -1,5 +1,10 @@
 name: Serverless actions 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    
 jobs:
 
   deploy:
