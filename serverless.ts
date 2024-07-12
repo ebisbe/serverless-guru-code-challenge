@@ -17,7 +17,21 @@ const serverlessConfig: ServerlessExtended = {
     stage: "dev",
     runtime: "nodejs20.x",
     logs: {
-      httpApi: true,
+      httpApi: {
+        format: JSON.stringify({
+          requestId: "$context.requestId",
+          ip: "$context.identity.sourceIp",
+          requestTime: "$context.requestTime",
+          httpMethod: "$context.httpMethod",
+          routeKey: "$context.routeKey",
+          status: "$context.status",
+          protocol: "$context.protocol",
+          responseLength: "$context.responseLength",
+          errorMessage: "$context.error.message",
+          errorMessageString: "$context.error.messageString",
+          errorResponseType: "$context.error.responseType",
+        }),
+      },
     },
   },
 
