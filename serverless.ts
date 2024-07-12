@@ -1,3 +1,5 @@
+import { env } from "process";
+
 import resources from "./src/resources";
 import { WeddingTable } from "./src/resources/ddb";
 import { stepFunctions } from "./src/stepFunctions";
@@ -20,6 +22,7 @@ const serverlessConfig: ServerlessExtended = {
   provider: {
     name: "aws",
     stage: "dev",
+    region: "us-east-1",
     runtime: "nodejs20.x",
     logs: {
       httpApi: {
@@ -47,7 +50,20 @@ const serverlessConfig: ServerlessExtended = {
     },
   },
 
-  plugins: ["serverless-iam-roles-per-function", "serverless-step-functions"],
+  plugins: [
+    "serverless-iam-roles-per-function",
+    "serverless-step-functions",
+    "serverless-plugin-scripts",
+  ],
+
+  custom: {
+    scripts: {
+      hooks: {
+        "deploy:finalize":
+          "node post-deploy.js --name=${self:service} --region=${self:provider.region}",
+      },
+    },
+  },
 
   stepFunctions,
 

@@ -18,3 +18,4 @@ jobs:
           pnpm install
           pnpm test
           pnpm sls deploy
+          pnpm test-e2e

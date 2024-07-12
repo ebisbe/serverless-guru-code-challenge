@@ -87,6 +87,9 @@ importers:
       serverless-iam-roles-per-function:
         specifier: ^3.2.0
         version: 3.2.0
+      serverless-plugin-scripts:
+        specifier: ^1.0.2
+        version: 1.0.2
       serverless-step-functions:
         specifier: ^3.21.0
         version: 3.21.0(serverless@4.1.11)
@@ -2680,6 +2683,9 @@ packages:
   serverless-iam-roles-per-function@3.2.0:
     resolution: {integrity: sha512-AXmxACHEUsDcFDcv8QNwDgn2L0brRJ7pz/phD3lFB/wQ3TtPJkorC+J7PxgFQbaWIQk15EIlU83BtKXeQoPTAg==}
     engines: {node: '>=10'}
+
+  serverless-plugin-scripts@1.0.2:
+    resolution: {integrity: sha512-+OL9fFz5r6BXNHfpu9MDLehS/haC0fy/T3V5uJsTfLAnNsn+PzM6BmvefUfWG372hBT7piTbywB1Vl1+4LmI5Q==}
 
   serverless-step-functions@3.21.0:
     resolution: {integrity: sha512-u6rMkTQaM4z/GSSy36Q/Utl0c7zaOv3i7sqVpZfvKVSV7LH+E40tptSSKRddECFWIKVERaT14JI7Dnwx9luoCQ==}
@@ -6485,6 +6491,8 @@ snapshots:
   serverless-iam-roles-per-function@3.2.0:
     dependencies:
       lodash: 4.17.21
+
+  serverless-plugin-scripts@1.0.2: {}
 
   serverless-step-functions@3.21.0(serverless@4.1.11):
     dependencies:

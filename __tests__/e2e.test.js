@@ -1,6 +1,8 @@
 import { describe, expect, it } from "@jest/globals";
+import { config } from "dotenv";
+config({ path: ".env.e2e" });
 
-const { endpoint } = process.env;
+const { API_GATEWAY_URL: endpoint } = process.env;
 
 const wrapper = ({ path = "", method, body }) => {
   const headers = { Accept: "application/json" };
