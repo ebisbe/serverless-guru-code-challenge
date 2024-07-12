@@ -94,7 +94,7 @@ export const itemStream: StepFunctions = {
               ExpressionAttributeValues: {
                 ":priceDiff": {
                   "N.$":
-                    "States.MathAdd(States.StringToJson(States.Format('-{}', $.OldImage.price.N)),$.NewImage.price.N)",
+                    "States.Format('{}',States.MathAdd(States.StringToJson(States.Format('-{}', $.OldImage.price.N)),States.StringToJson($.NewImage.price.N)))",
                 },
               },
             },
