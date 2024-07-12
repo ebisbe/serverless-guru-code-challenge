@@ -90,14 +90,11 @@ export const itemStream: StepFunctions = {
                   "S.$": "States.Format('LIST#{}',$.NewImage.listId.S)",
                 },
               },
-              UpdateExpression:
-                "SET totalPrice = totalPrice - :oldPrice + :newPrice",
+              UpdateExpression: "SET totalPrice = totalPrice + :priceDiff",
               ExpressionAttributeValues: {
-                ":newPrice": {
-                  "N.$": "$.NewImage.price.N",
-                },
-                ":oldPrice": {
-                  "N.$": "$.OldImage.price.N",
+                ":priceDiff": {
+                  "N.$":
+                    "States.MathAdd(States.StringToJson(States.Format('-{}', $.OldImage.price.N)),$.NewImage.price.N)",
                 },
               },
             },
