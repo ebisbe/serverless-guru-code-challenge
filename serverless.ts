@@ -43,7 +43,7 @@ const serverlessConfig: ServerlessExtended = {
   build: {
     esbuild: {
       bundle: true,
-      minify: true,
+      minify: false,
     },
   },
 
