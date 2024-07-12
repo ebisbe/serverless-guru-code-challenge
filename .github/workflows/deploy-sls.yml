@@ -1,4 +1,4 @@
-name: Serverless actions 
+name: Serverless deploy 
 on:
   push:
     branches:
