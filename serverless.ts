@@ -12,6 +12,11 @@ const serverlessConfig: ServerlessExtended = {
   app: "code-challenge",
 
   service: "code-challenge-5",
+
+  package: {
+    individually: true,
+  },
+
   provider: {
     name: "aws",
     stage: "dev",
