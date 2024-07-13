@@ -50,15 +50,6 @@ const MySchema = {
       createdAt: { type: Date },
       updatedAt: { type: Date },
     },
-    Buyer: {
-      pk: { type: String, value: "ITEM#${itemId}" },
-      sk: { type: String, value: "BUYER#${userId}" },
-      userId: { type: String, required: true },
-      name: { type: String, required: true },
-      itemId: { type: String, required: true },
-      createdAt: { type: Date },
-      updatedAt: { type: Date },
-    },
   } as const,
 };
 
@@ -74,6 +65,3 @@ export const List = table.getModel("List");
 
 export type Item = Entity<typeof MySchema.models.Item>;
 export const Item = table.getModel("Item");
-
-export type Buyer = Entity<typeof MySchema.models.Buyer>;
-export const Buyer = table.getModel("Buyer");
