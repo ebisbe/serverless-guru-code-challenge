@@ -7,6 +7,9 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --config jest.config.ddb.cjs",
     "test-e2e": "NODE_OPTIONS=--experimental-vm-modules jest"
   },
+  "engines": {
+    "node": "^20"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
