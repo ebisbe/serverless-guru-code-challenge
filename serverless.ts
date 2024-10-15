@@ -1,5 +1,3 @@
-import { env } from "process";
-
 import resources from "./src/resources";
 import { WeddingTable } from "./src/resources/ddb";
 import { stepFunctions } from "./src/stepFunctions";
